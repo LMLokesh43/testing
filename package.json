@@ -8,14 +8,38 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "@zeit/next-sass": "^1.0.1",
     "next": "latest",
+    "next-compose-plugins": "^2.2.0",
+    "next-images": "^1.4.0",
+    "next-redux-wrapper": "^6.0.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "webpack": "^4.43.0"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.3",
+    "@types/next-redux-wrapper": "^3.0.0",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
+    "@types/react-redux": "^7.1.9",
+    "jest": "^26.1.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-scss": "^3.18.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^5.0.0",
     "typescript": "3.7.3"
   },
   "license": "ISC"

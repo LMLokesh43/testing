@@ -1,21 +1,19 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunkMiddleware from 'redux-thunk'
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from './reducers';
+import { MakeStore, createWrapper, Context } from 'next-redux-wrapper';
 
-import counter, { CounterState } from './counter/counterReducer'
-
-export interface AppState {
-  counter: CounterState
+// NOTE: config store
+declare global {
+  interface Window {
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose
+  }
 }
+const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-/**
- * initStore
- * Initialise and export redux store
- */
-export const initStore = (initialState: {} = {}) => {
-  return createStore(
-    combineReducers({ counter }),
-    initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware))
-  )
-}
+
+// create a makeStore function
+const makeStore: MakeStore<any> = (context: Context) => createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+
+// export an assembled wrapper
+export const wrapper = createWrapper<any>(makeStore, { debug: true });

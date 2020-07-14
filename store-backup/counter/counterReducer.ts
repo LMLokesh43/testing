@@ -1,4 +1,6 @@
 import { CounterAction, CounterActionTypes } from './counterActions'
+import { AnyAction } from 'redux';
+import {HYDRATE } from 'next-redux-wrapper';
 
 export interface CounterState {
   readonly count: number
@@ -13,10 +15,13 @@ const initialCounterState = {
  */
 export default (
   state: CounterState = initialCounterState,
-  action: CounterAction
+  action: AnyAction
 ) => {
   const { count } = state
   switch (action.type) {
+    case HYDRATE:
+      // Attention! This will overwrite client state! Real apps should use proper reconciliation.
+      return { ...state, ...action.payload };
     case CounterActionTypes.INCREMENT:
       return {
         ...state,
